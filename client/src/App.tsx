@@ -6,7 +6,17 @@ import Layout from "./Layout";
 import RegisterPage from "./pages/RegisterPage";
 import axios from "axios";
 
-axios.defaults.baseURL = "http://localhost:4000";
+
+// const clientHostname = window.location.hostname;
+// const isProduction = clientHostname === 'airsat.vercel.app';
+
+// axios.defaults.baseURL = isProduction
+//   ? 'https://airstay-api.onrender.com/'
+//   : 'http://localhost:4000';
+
+axios.defaults.baseURL = 'https://airstay-api.onrender.com/';
+
+axios.defaults.timeout = 50000;
 
 function App() {
   return (

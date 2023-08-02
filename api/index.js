@@ -11,8 +11,6 @@ const bcryptSalt = bcrypt.genSaltSync(10);
 app.use(express.json());
 app.use(cors());
 
-console.log("process.env.MONGO_URL", process.env.MONGO_URL);
-
 mongoose.connect(process.env.MONGO_URL);
 
 app.get("/test", (req, res) => {
