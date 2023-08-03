@@ -16,7 +16,6 @@ export default function RegisterPage() {
         email,
         password,
       });
-
       alert("User registered. Please login.");
     } catch (error) {
       alert("Error registering user. Please try again.");
