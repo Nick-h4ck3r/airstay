@@ -15,13 +15,13 @@ function Account({}: Props) {
 
   async function logout() {
     await axios.post("/logout");
-    setUser(null);
     setRedirect("/");
+    setUser(null);
   }
 
   if (!ready) return <div>Loading...</div>;
 
-  if (ready && !user) return <Navigate to={"/login"} />;
+  if (ready && !user && !redirect) return <Navigate to={"/login"} />;
 
   function linkClasses(type = null as any) {
     let classes = "py-2 px-6";
