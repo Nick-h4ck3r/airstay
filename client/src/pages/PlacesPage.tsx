@@ -18,7 +18,6 @@ function PlacesPage({}: Props) {
     <div>
       <AccountNav />
       <div className="text-center">
-        list of all added places <br />
         <Link
           to={"/account/places/new"}
           className="inline-flex gap-2 bg-primary text-white px-4 py-2 rounded-full"
@@ -37,6 +36,30 @@ function PlacesPage({}: Props) {
           </svg>
           Add new place
         </Link>
+      </div>
+      <div className="">
+        {places.length > 0 &&
+          places.map((place: any) => (
+            <Link
+              to={"/account/places/" + place._id}
+              className="bg-gray-100 flex cursor-pointer items-center gap-4 rounded-2xl px-4 py-4 my-4"
+            >
+              <div className="h-32 w-32 bg-gray-300 shrink-0 rounded-2xl">
+                {place.photos.length > 0 && (
+                  <img
+                    className="object-cover w-full h-full rounded-2xl"
+                    src={"http://localhost:4000/uploads/" + place.photos[0]}
+                    alt={place.title}
+                  />
+                )}
+              </div>
+              <div className="grow-0 shrink">
+                <h2 className="text-2xl font-semibold">{place.title}</h2>
+                <p>{place.address}</p>
+                <p className="text-gray-700 mt-1">{place.description}</p>
+              </div>
+            </Link>
+          ))}
       </div>
     </div>
   );

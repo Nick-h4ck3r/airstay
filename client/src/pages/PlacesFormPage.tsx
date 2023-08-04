@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import Perks from "./Perks";
 import AccountNav from "../AccountNav";
@@ -7,7 +7,9 @@ import AccountNav from "../AccountNav";
 type Props = {};
 
 function PlacesFormPage({}: Props) {
-  const { action } = useParams();
+  const { id } = useParams();
+  console.log({ id });
+
   const [title, setTitle] = useState("");
   const [address, setAddress] = useState("");
   const [description, setDescription] = useState("");
@@ -19,6 +21,25 @@ function PlacesFormPage({}: Props) {
   const [addedPhotos, setAddedPhotos] = useState<any>([]);
   const [photoLink, setPhotoLink] = useState("");
   const [redirectToPlacesList, setRedirectToPlacesList] = useState(false);
+
+  useEffect(() => {
+    if (!id) {
+      return;
+    }
+
+    axios.get(`/places/${id}`).then((response) => {
+      const { data } = response;
+      setTitle(data.title);
+      setAddress(data.address);
+      setAddedPhotos(data.photos);
+      setDescription(data.description);
+      setPerks(data.perks);
+      setExtraInfo(data.extraInfo);
+      setCheckIn(data.checkIn);
+      setCheckOut(data.checkOut);
+      setMaxGuests(data.maxGuests);
+    });
+  }, [id]);
 
   function inputHeader(text: string) {
     return <h2 className="text-2xl font-semibold mt-3">{text}</h2>;
@@ -71,20 +92,32 @@ function PlacesFormPage({}: Props) {
       });
   }
 
-  function addNewPlace(e: any) {
+  function savePlace(e: any) {
     e.preventDefault();
-    axios.post("/places", {
+    const placeData = {
       title,
       address,
-      photos: addedPhotos,
+      addedPhotos,
       description,
       perks,
       extraInfo,
       checkIn,
       checkOut,
       maxGuests,
-    });
-    setRedirectToPlacesList(true);
+    };
+
+    if (id) {
+      // update place
+      axios.put(`/places`, {
+        id,
+        ...placeData,
+      });
+      setRedirectToPlacesList(true);
+    } else {
+      // create place
+      axios.post("/places", placeData);
+      setRedirectToPlacesList(true);
+    }
   }
 
   if (redirectToPlacesList) {
@@ -94,7 +127,7 @@ function PlacesFormPage({}: Props) {
   return (
     <div>
       <AccountNav />
-      <form onSubmit={addNewPlace} className="">
+      <form onSubmit={savePlace} className="">
         {preInput("Title", "Title for your places should be catchy.")}
         <input
           className=" "
@@ -184,7 +217,7 @@ function PlacesFormPage({}: Props) {
           "Perks",
           "What makes your place special? Select all that apply."
         )}
-        <div className="mt-2 grid gap-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div className="mt-2 mb-6 grid gap-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           <Perks selectedPerks={perks} onChange={setPerks} />
         </div>
 

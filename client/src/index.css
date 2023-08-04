@@ -16,6 +16,10 @@ textarea {
   @apply w-full border my-2 py-2 px-4 rounded-2xl;
 }
 
+textarea {
+  @apply h-auto resize-y;
+}
+
 button.primary {
   @apply bg-primary text-white px-2 py-2 rounded-2xl w-full font-bold;
 }

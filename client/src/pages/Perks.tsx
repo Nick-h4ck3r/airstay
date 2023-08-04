@@ -7,7 +7,6 @@ function Perks({ selectedPerks, onChange }: Props) {
   function handleCbClick(e: any) {
     const { checked, name } = e.target;
 
-
     if (checked) {
       onChange([...selectedPerks, name]);
     } else {
@@ -19,7 +18,12 @@ function Perks({ selectedPerks, onChange }: Props) {
   return (
     <>
       <label className="border flex items-center space-x-3 p-4 rounded-xl cursor-pointer">
-        <input type="checkbox" onChange={handleCbClick} name="wifi" />
+        <input
+          type="checkbox"
+          onChange={handleCbClick}
+          checked={selectedPerks.includes("wifi")}
+          name="wifi"
+        />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -38,7 +42,12 @@ function Perks({ selectedPerks, onChange }: Props) {
       </label>
 
       <label className="border flex items-center space-x-3 p-4 rounded-xl cursor-pointer">
-        <input type="checkbox" onChange={handleCbClick} name="parking" />
+        <input
+          type="checkbox"
+          onChange={handleCbClick}
+          checked={selectedPerks.includes("parking")}
+          name="parking"
+        />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -57,7 +66,12 @@ function Perks({ selectedPerks, onChange }: Props) {
       </label>
 
       <label className="border flex items-center space-x-3 p-4 rounded-xl cursor-pointer">
-        <input type="checkbox" onChange={handleCbClick} name="tv" />
+        <input
+          type="checkbox"
+          onChange={handleCbClick}
+          checked={selectedPerks.includes("tv")}
+          name="tv"
+        />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -76,7 +90,12 @@ function Perks({ selectedPerks, onChange }: Props) {
       </label>
 
       <label className="border flex items-center space-x-3 p-4 rounded-xl cursor-pointer">
-        <input type="checkbox" onChange={handleCbClick} name="pets" />
+        <input
+          type="checkbox"
+          onChange={handleCbClick}
+          checked={selectedPerks.includes("pets")}
+          name="pets"
+        />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -95,7 +114,12 @@ function Perks({ selectedPerks, onChange }: Props) {
       </label>
 
       <label className="border flex items-center space-x-3 p-4 rounded-xl cursor-pointer">
-        <input type="checkbox" onChange={handleCbClick} name="entrance" />
+        <input
+          type="checkbox"
+          onChange={handleCbClick}
+          checked={selectedPerks.includes("entrance")}
+          name="entrance"
+        />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -114,7 +138,12 @@ function Perks({ selectedPerks, onChange }: Props) {
       </label>
 
       <label className="border flex items-center space-x-3 p-4 rounded-xl cursor-pointer">
-        <input type="checkbox" onChange={handleCbClick} name="cctv" />
+        <input
+          type="checkbox"
+          onChange={handleCbClick}
+          checked={selectedPerks.includes("cctv")}
+          name="cctv"
+        />
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
