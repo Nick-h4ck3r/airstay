@@ -3,7 +3,11 @@ const cors = require("cors");
 const { default: mongoose } = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+
+// importing models here
 const User = require("./models/User");
+const Place = require("./models/Place");
+
 const cookieParser = require("cookie-parser");
 const imageDownloader = require("image-downloader");
 const multer = require("multer");
@@ -120,6 +124,47 @@ app.post("/upload", photosMiddleware.array("photos", 100), (req, res) => {
     uploadedFiles.push(newPath.replace("uploads\\", ""));
   }
   res.json(uploadedFiles);
+});
+
+app.post("/places", async (req, res) => {
+  const { token } = req.cookies;
+  const {
+    title,
+    address,
+    addedPhotos,
+    description,
+    perks,
+    extraInfo,
+    checkIn,
+    checkOut,
+    maxGuests,
+  } = req.body;
+
+  jwt.verify(token, jwtSecret, {}, async (err, userData) => {
+    if (err) throw err;
+    const placeDoc = await Place.create({
+      owner: userData.id,
+      title,
+      address,
+      addedPhotos,
+      description,
+      perks,
+      extraInfo,
+      checkIn,
+      checkOut,
+      maxGuests,
+    });
+    res.json(placeDoc);
+  });
+});
+
+app.get("/places", async (req, res) => {
+  const { token } = req.cookies;
+  jwt.verify(token, jwtSecret, {}, async (err, userData) => {
+    if (err) throw err;
+    const placeDoc = await Place.find({ owner: userData.id });
+    res.json(placeDoc);
+  });
 });
 
 app.listen(4000, () => {
