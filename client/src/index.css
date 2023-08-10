@@ -12,8 +12,9 @@ input[type="text"],
 input[type="email"],
 input[type="password"],
 input[type="number"],
+input[type="tel"],
 textarea {
-  @apply w-full border my-2 py-2 px-4 rounded-2xl;
+  @apply w-full border my-2 py-3 px-4 rounded-2xl;
 }
 
 textarea {
@@ -21,5 +22,11 @@ textarea {
 }
 
 button.primary {
-  @apply bg-primary text-white px-2 py-2 rounded-2xl w-full font-bold;
+  @apply bg-primary text-white px-2 py-3 text-center rounded-2xl w-full font-semibold text-xl;
 }
+
+button.reserve {
+  @apply bg-gradient-to-r from-[#E51E4D] to-[#D70566] text-white px-2 py-4 rounded-xl w-full font-semibold text-xl hover:from-[#D70566] hover:to-[#E51E4D];
+}
+/* #E51E4D */
+/* #D70566 */

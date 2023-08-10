@@ -14,26 +14,29 @@ export default function LoginPage() {
     e.preventDefault();
 
     try {
-      const {data} = await axios.post("/login", {
-        email, password
-      })
+      const { data } = await axios.post("/login", {
+        email,
+        password,
+      });
       setUser(data);
       alert("Login successful!");
       setRedirect(true);
-
     } catch (error) {
       alert("Error logging in. Please try again.");
     }
   }
 
-  if(redirect) {
-    return <Navigate to={'/'} />
+  if (redirect) {
+    return <Navigate to={"/"} />;
   }
 
   return (
-    <div className="mt-4 grow flex items-center justify-around">
-      <div className="mb-64">
-        <h1 className="text-3xl text-center font-semibold">Login</h1>
+    <div className="mt-4 max-w-xl mx-auto grow flex items-center">
+      <div className="">
+        <h1 className="text-4xl text-center font-bold">Welcome back!</h1>
+        <p className="text-center mt-4 mb-10 text-gray-500">
+          Please enter your details
+        </p>
         <form action="" className="max-w-md mx-auto" onSubmit={handleLogin}>
           <input
             type="email"
@@ -47,11 +50,45 @@ export default function LoginPage() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <button className="primary">Login</button>
-          <div className="text-center py-2 font-semibold text-gray-500">
+          <div className="mt-2 mb-6 flex justify-between text-sm">
+            <div className="items-center flex pl-1">
+              <input
+                type="checkbox"
+                id="remember-me"
+                className="accent-primary"
+              />
+              <label htmlFor="remember-me" className="ml-2">
+                Remember me
+              </label>
+            </div>
+
+            <a
+              href="#"
+              className="text-gray-400 hover:text-gray-500 float-right"
+            >
+              Forgot password?
+            </a>
+          </div>
+          <button className="primary mt-6">Log in</button>
+          <button className="bg-gray-200 text-black mt-3 mb-8 px-2 py-3 text-center rounded-2xl w-full font-semibold text-xl flex items-center justify-center gap-2">
+            <svg viewBox="0 0 48 48" className="w-[22px] h-[22px]">
+              <title>Google Logo</title>
+              <clipPath id="g">
+                <path d="M44.5 20H24v8.5h11.8C34.7 33.9 30.1 37 24 37c-7.2 0-13-5.8-13-13s5.8-13 13-13c3.1 0 5.9 1.1 8.1 2.9l6.4-6.4C34.6 4.1 29.6 2 24 2 11.8 2 2 11.8 2 24s9.8 22 22 22c11 0 21-8 21-22 0-1.3-.2-2.7-.5-4z" />
+              </clipPath>
+              <g className="colors" clip-path="url(#g)">
+                <path fill="#FBBC05" d="M0 37V11l17 13z" />
+                <path fill="#EA4335" d="M0 11l17 13 7-6.1L48 14V0H0z" />
+                <path fill="#34A853" d="M0 37l30-23 7.9 1L48 0v48H0z" />
+                <path fill="#4285F4" d="M48 48L17 24l-4-3 35-10z" />
+              </g>
+            </svg>
+            Log in with Google
+          </button>
+          <div className="text-center py-2 text-gray-500">
             Don't have an account yet? {""}
-            <Link to={"/register"} className="underline text-black">
-              Register now
+            <Link to={"/register"} className="text-primary font-semibold">
+              Register
             </Link>
           </div>
         </form>

@@ -9,7 +9,7 @@ function PlacesPage({}: Props) {
   const [places, setPlaces] = useState<any>([]);
 
   useEffect(() => {
-    axios.get("/places").then(({ data }) => {
+    axios.get("/user-places").then(({ data }) => {
       setPlaces(data);
     });
   }, []);
@@ -53,10 +53,10 @@ function PlacesPage({}: Props) {
                   />
                 )}
               </div>
-              <div className="grow-0 shrink">
+              <div className="grow-0 shrink truncate">
                 <h2 className="text-2xl font-semibold">{place.title}</h2>
                 <p>{place.address}</p>
-                <p className="text-gray-700 mt-1">{place.description}</p>
+                <p className="text-gray-700 mt-1 ">{place.description}</p>
               </div>
             </Link>
           ))}

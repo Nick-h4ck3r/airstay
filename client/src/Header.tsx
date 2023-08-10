@@ -24,7 +24,7 @@ export default function Header() {
         <span className="font-bold text-xl">airstay</span>
       </a>
 
-      <div className="searchBar flex gap-2 border border-gray-300 rounded-full py-2 px-4 shadow-md">
+      <div className="searchBar md:flex gap-2 border border-gray-300 rounded-full py-2 px-4 shadow-md hidden">
         <div>Anywhere</div>
         <div className="border-l border-l-gray-500"></div>
         <div>Any week</div>
