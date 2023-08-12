@@ -89,7 +89,7 @@ app.post("/login", async (req, res) => {
         (err, token) => {
           if (err) throw err;
           // res.cookie('token', token).json("password is correct.")
-          res.cookie("token", token, { httpOnly: true }).json(userDoc);
+          res.cookie("token", token, { httpOnly: true, secure: true, sameSite: 'None' }).json(userDoc);
           console.log(token);
         }
       );
