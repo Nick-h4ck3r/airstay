@@ -172,7 +172,10 @@ function PlacesFormPage({}: Props) {
           />
           <button
             onClick={addPhotoByLink}
-            className="bg-gray-200 px-6 rounded-2xl my-1"
+            className={`bg-gray-200 px-6 rounded-2xl my-1 ${
+              !photoLink && "opacity-50"
+            }`}
+            disabled={!photoLink}
           >
             add&nbsp;photo
           </button>
@@ -184,8 +187,10 @@ function PlacesFormPage({}: Props) {
               <div key={link} className="h-32 flex relative">
                 <img
                   className="rounded-2xl w-full object-cover"
-                  src={"http://localhost:4000/uploads/" + link}
+                  // src={"http://localhost:4000/uploads/" + link}
+                  src={`https://firebasestorage.googleapis.com/v0/b/airstay-6c8e3.appspot.com/o/${link}?alt=media&token=a58ca9bb-9265-4318-9602-3cf13a68b967`}
                 />
+
                 <button
                   onClick={() => removePhoto(link)}
                   className="absolute bottom-2 right-2 p-1 shadow-md shadow-black bg-slate-800/60 rounded-2xl text-white"

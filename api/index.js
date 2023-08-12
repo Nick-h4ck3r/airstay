@@ -4,6 +4,17 @@ const { default: mongoose } = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
+const admin = require("firebase-admin");
+
+const serviceAccount = require("./firebase.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  storageBucket: "airstay-6c8e3.appspot.com",
+});
+
+const bucket = admin.storage().bucket();
+
 // importing models here
 const User = require("./models/User");
 const Place = require("./models/Place");
@@ -13,6 +24,10 @@ const cookieParser = require("cookie-parser");
 const imageDownloader = require("image-downloader");
 const multer = require("multer");
 const fs = require("fs");
+
+const upload = multer({
+  storage: multer.memoryStorage(),
+});
 
 require("dotenv").config();
 const app = express();
@@ -114,17 +129,43 @@ app.post("/upload-by-link", async (req, res) => {
 
 const photosMiddleware = multer({ dest: "uploads/" });
 
-app.post("/upload", photosMiddleware.array("photos", 100), (req, res) => {
+// app.post("/upload", photosMiddleware.array("photos", 100), (req, res) => {
+//   const uploadedFiles = [];
+//   for (let i = 0; i < req.files.length; i++) {
+//     const { path, originalname } = req.files[i];
+//     const parts = originalname.split(".");
+//     const ext = parts[parts.length - 1];
+//     const newPath = path + "." + ext;
+//     fs.renameSync(path, newPath);
+//     uploadedFiles.push(newPath.replace("uploads\\", ""));
+//   }
+//   res.json(uploadedFiles);
+// });
+
+app.post("/upload", upload.array("photos", 100), async (req, res) => {
   const uploadedFiles = [];
-  for (let i = 0; i < req.files.length; i++) {
-    const { path, originalname } = req.files[i];
-    const parts = originalname.split(".");
+  for (const file of req.files) {
+    const parts = file.originalname.split(".");
     const ext = parts[parts.length - 1];
-    const newPath = path + "." + ext;
-    fs.renameSync(path, newPath);
-    uploadedFiles.push(newPath.replace("uploads\\", ""));
+    const newName = "photo" + Date.now() + "." + "jpg";
+    const blob = bucket.file(newName);
+    const blobStream = blob.createWriteStream({
+      metadata: {
+        contentType: file.mimetype,
+      },
+    });
+    blobStream.on("error", (err) => {
+      console.log(err);
+      res.status(500).json({ error: "Something is wrong" });
+    });
+    blobStream.on("finish", () => {
+      uploadedFiles.push(newName);
+      if (uploadedFiles.length === req.files.length) {
+        res.status(200).json(uploadedFiles);
+      }
+    });
+    blobStream.end(file.buffer);
   }
-  res.json(uploadedFiles);
 });
 
 app.post("/places", async (req, res) => {

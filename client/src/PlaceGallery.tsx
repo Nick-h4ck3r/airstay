@@ -44,7 +44,9 @@ function PlaceGallery({ place }: Props) {
               <div className="">
                 <img
                   className="object-cover w-full"
-                  src={`http://localhost:4000/uploads/${photo}`}
+                  src={`https://firebasestorage.googleapis.com/v0/b/airstay-6c8e3.appspot.com/o/${photo}?alt=media&token=a58ca9bb-9265-4318-9602-3cf13a68b967`}
+                  // src={`https://firebasestorage.googleapis.com/v0/b/airstay-6c8e3.appspot.com/o/${link}?alt=media&token=a58ca9bb-9265-4318-9602-3cf13a68b967`}
+                  // src={`https://firebasestorage.googleapis.com/v0/b/airstay-6c8e3.appspot.com/o/${photo}?alt=media&token=a58ca9bb-9265-4318-9602-3cf13a68b967`}
                   alt={photo.caption}
                 />
               </div>
@@ -61,7 +63,7 @@ function PlaceGallery({ place }: Props) {
             <div>
               <img
                 className="aspect-square object-cover"
-                src={`http://localhost:4000/uploads/${place.photos[0]}`}
+                src={`https://firebasestorage.googleapis.com/v0/b/airstay-6c8e3.appspot.com/o/${place.photos[0]}?alt=media&token=a58ca9bb-9265-4318-9602-3cf13a68b967`}
                 alt={place.photos[0].caption}
               />
             </div>
@@ -71,7 +73,7 @@ function PlaceGallery({ place }: Props) {
           {place.photos?.[1] && (
             <img
               className="aspect-square object-cover"
-              src={`http://localhost:4000/uploads/${place.photos[1]}`}
+              src={`https://firebasestorage.googleapis.com/v0/b/airstay-6c8e3.appspot.com/o/${place.photos[1]}?alt=media&token=a58ca9bb-9265-4318-9602-3cf13a68b967`}
               alt={place.photos[0].caption}
             />
           )}
@@ -80,7 +82,7 @@ function PlaceGallery({ place }: Props) {
             {place.photos?.[2] && (
               <img
                 className="aspect-square object-cover relative top-3"
-                src={`http://localhost:4000/uploads/${place.photos[2]}`}
+                src={`https://firebasestorage.googleapis.com/v0/b/airstay-6c8e3.appspot.com/o/${place.photos[2]}?alt=media&token=a58ca9bb-9265-4318-9602-3cf13a68b967`}
                 alt={place.photos[0].caption}
               />
             )}
@@ -90,7 +92,7 @@ function PlaceGallery({ place }: Props) {
           {place.photos?.[1] && (
             <img
               className="aspect-square object-cover"
-              src={`http://localhost:4000/uploads/${place.photos[3]}`}
+              src={`https://firebasestorage.googleapis.com/v0/b/airstay-6c8e3.appspot.com/o/${place.photos[3]}?alt=media&token=a58ca9bb-9265-4318-9602-3cf13a68b967`}
               alt={place.photos[0].caption}
             />
           )}
@@ -99,7 +101,7 @@ function PlaceGallery({ place }: Props) {
             {place.photos?.[2] && (
               <img
                 className="aspect-square object-cover relative top-3"
-                src={`http://localhost:4000/uploads/${place.photos[4]}`}
+                src={`https://firebasestorage.googleapis.com/v0/b/airstay-6c8e3.appspot.com/o/${place.photos[4]}?alt=media&token=a58ca9bb-9265-4318-9602-3cf13a68b967`}
                 alt={place.photos[0].caption}
               />
             )}

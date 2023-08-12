@@ -26,7 +26,8 @@ function IndexPage({}: Props) {
                 <div className="flex">
                   <img
                     className="aspect-square object-cover"
-                    src={"http://localhost:4000/uploads/" + place.photos[0]}
+                    // src={"http://localhost:4000/uploads/" + place.photos[0]}
+                    src={`https://firebasestorage.googleapis.com/v0/b/airstay-6c8e3.appspot.com/o/${place.photos[0]}?alt=media&token=a58ca9bb-9265-4318-9602-3cf13a68b967`}
                     alt={place.title}
                   />
                 </div>
