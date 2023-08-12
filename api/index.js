@@ -33,7 +33,6 @@ const upload = multer({
   storage: multer.memoryStorage(),
 });
 
-
 const app = express();
 
 const bcryptSalt = bcrypt.genSaltSync(10);
@@ -187,32 +186,40 @@ app.post("/places", async (req, res) => {
     price,
   } = req.body;
 
-  jwt.verify(token, jwtSecret, {}, async (err, userData) => {
-    if (err) throw err;
-    const placeDoc = await Place.create({
-      owner: userData.id,
-      title,
-      address,
-      addedPhotos,
-      description,
-      perks,
-      extraInfo,
-      checkIn,
-      checkOut,
-      maxGuests,
-      price,
+  if (token) {
+    jwt.verify(token, jwtSecret, {}, async (err, userData) => {
+      if (err) throw err;
+      const placeDoc = await Place.create({
+        owner: userData.id,
+        title,
+        address,
+        addedPhotos,
+        description,
+        perks,
+        extraInfo,
+        checkIn,
+        checkOut,
+        maxGuests,
+        price,
+      });
+      res.json(placeDoc);
     });
-    res.json(placeDoc);
-  });
+  } else {
+    res.json(null);
+  }
 });
 
 app.get("/user-places", async (req, res) => {
   const { token } = req.cookies;
-  jwt.verify(token, jwtSecret, {}, async (err, userData) => {
-    if (err) throw err;
-    const placeDoc = await Place.find({ owner: userData.id });
-    res.json(placeDoc);
-  });
+  if (token) {
+    jwt.verify(token, jwtSecret, {}, async (err, userData) => {
+      if (err) throw err;
+      const placeDoc = await Place.find({ owner: userData.id });
+      res.json(placeDoc);
+    });
+  } else {
+    res.json(null);
+  }
 });
 
 app.get("/places/:id", async (req, res) => {
@@ -236,26 +243,30 @@ app.put("/places", async (req, res) => {
     maxGuests,
     price,
   } = req.body;
-  jwt.verify(token, jwtSecret, {}, async (err, userData) => {
-    if (err) throw err;
-    const placeDoc = await Place.findById(id);
-    if (userData.id === placeDoc.owner.toString()) {
-      placeDoc.set({
-        title,
-        address,
-        photos: addedPhotos,
-        description,
-        perks,
-        extraInfo,
-        checkIn,
-        checkOut,
-        maxGuests,
-        price,
-      });
-      await placeDoc.save();
-      res.json(placeDoc);
-    }
-  });
+  if (token) {
+    jwt.verify(token, jwtSecret, {}, async (err, userData) => {
+      if (err) throw err;
+      const placeDoc = await Place.findById(id);
+      if (userData.id === placeDoc.owner.toString()) {
+        placeDoc.set({
+          title,
+          address,
+          photos: addedPhotos,
+          description,
+          perks,
+          extraInfo,
+          checkIn,
+          checkOut,
+          maxGuests,
+          price,
+        });
+        await placeDoc.save();
+        res.json(placeDoc);
+      }
+    });
+  } else {
+    res.json(null);
+  }
 });
 
 app.get("/places", async (req, res) => {

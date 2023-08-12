@@ -20,11 +20,10 @@ import BookingPage from "./pages/BookingPage";
 //   ? 'https://airstay-api.onrender.com'
 //   : 'http://localhost:4000';
 
-axios.defaults.baseURL = "http://localhost:4000";
+// axios.defaults.baseURL = "http://localhost:4000";
+axios.defaults.baseURL = "https://airstay.cyclic.app";
 axios.defaults.withCredentials = true;
 
-// axios.defaults.baseURL = 'https://airstay-api.onrender.com';
-// axios.defaults.baseURL = 'https://airstay-api.vercel.app';
 
 axios.defaults.timeout = 50000;
 
