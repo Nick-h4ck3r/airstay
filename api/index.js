@@ -6,7 +6,11 @@ const jwt = require("jsonwebtoken");
 
 const admin = require("firebase-admin");
 
-const serviceAccount = require("./firebase.json");
+require("dotenv").config();
+
+// const serviceAccount = require("./firebase.json");
+const serviceAccount = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT_KEY);
+// console.log(serviceAccount);
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -29,7 +33,7 @@ const upload = multer({
   storage: multer.memoryStorage(),
 });
 
-require("dotenv").config();
+
 const app = express();
 
 const bcryptSalt = bcrypt.genSaltSync(10);
