@@ -211,14 +211,18 @@ app.post("/places", async (req, res) => {
 
 app.get("/user-places", async (req, res) => {
   const { token } = req.cookies;
+  console.log("token "+token);
+  console.log("jwtseceret"+jwtSecret);
+
   if (token) {
+    console.log("token found");
     jwt.verify(token, jwtSecret, {}, async (err, userData) => {
       if (err) throw err;
       const placeDoc = await Place.find({ owner: userData.id });
       res.json(placeDoc);
     });
   } else {
-    res.json(null);
+    res.json("token not found");
   }
 });
 
@@ -243,6 +247,7 @@ app.put("/places", async (req, res) => {
     maxGuests,
     price,
   } = req.body;
+  
   if (token) {
     jwt.verify(token, jwtSecret, {}, async (err, userData) => {
       if (err) throw err;
