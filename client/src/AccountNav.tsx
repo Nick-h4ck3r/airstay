@@ -10,11 +10,11 @@ function AccountNav({}: Props) {
   }
 
   function linkClasses(type = null as any) {
-    let classes = "inline-flex gap-2 py-2 px-6 rounded-full";
+    let classes = "inline-flex gap-1 md:gap-2 py-2 md:py-2 px-3 md:px-6 rounded-full text-sm md:text-base items-center ";
     if (type === subpage) {
-      classes += " bg-primary text-white";
+      classes += "bg-primary/5 text-primary font-medium border-primary/10 border ";
     } else {
-      classes += " text-gray-500 bg-gray-100";
+      classes += "text-gray-500 bg-gray-100/50";
     }
     return classes;
   }
@@ -29,7 +29,7 @@ function AccountNav({}: Props) {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="w-6 h-6"
+            className="w-4 md:w-6 h-4 md:h-6"
           >
             <path
               strokeLinecap="round"
@@ -46,7 +46,7 @@ function AccountNav({}: Props) {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="w-6 h-6"
+            className="w-4 md:w-6 h-4 md:h-6"
           >
             <path
               strokeLinecap="round"
@@ -63,7 +63,7 @@ function AccountNav({}: Props) {
             viewBox="0 0 24 24"
             strokeWidth="1.5"
             stroke="currentColor"
-            className="w-6 h-6"
+            className="w-4 md:w-6 h-4 md:h-6"
           >
             <path
               strokeLinecap="round"

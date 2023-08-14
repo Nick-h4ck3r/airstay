@@ -34,11 +34,11 @@ function ProfilePage({}: Props) {
       <AccountNav />
 
       {subpage === "profile" && (
-        <div className="max-w-lg mx-auto text-center">
+        <div className="max-w-lg px-4 md:px-0 mx-auto text-center">
           <span>
             Logged in as {user.name} ({user.email})
           </span>
-          <button onClick={logout} className="primary max-w-sm mt-3">
+          <button onClick={logout} className="secondary max-w-sm mt-3">
             Logout
           </button>
         </div>

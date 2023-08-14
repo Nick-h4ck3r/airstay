@@ -1,7 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import PlaceGallery from "../PlaceGallery";
 
 type Props = {};
 
@@ -38,7 +37,7 @@ function BookingPage({}: Props) {
         {booking.place.address}
       </a>
 
-      <PlaceGallery place={booking.place} />
+      {/* <PlaceGallery place={booking.place} /> */}
     </div>
   );
 }

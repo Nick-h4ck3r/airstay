@@ -79,15 +79,15 @@ function BookingWidget({ place }: Props) {
 
       <div className="">
         <div className="flex border border-gray-400 rounded-b-none rounded-lg mt-4 text-left">
-          <div className="px-4 py-2">
+          <div className="px-4 py-2 w-1/2">
             <label
-              className="uppercase text-xs font-bold"
+              className="uppercase md:text-xs text-[10px] font-bold"
               htmlFor="checkinDate"
             >
               check-in
             </label>
             <input
-              className="outline-none text-base font-light"
+              className="outline-none text-base font-light w-full"
               type="date"
               name="checkinDate"
               id="checkinDate"
@@ -95,15 +95,15 @@ function BookingWidget({ place }: Props) {
               onChange={(e) => setCheckIn(e.target.value)}
             />
           </div>
-          <div className="border-l border-gray-400 px-4 py-2">
+          <div className="border-l border-gray-400 px-4 py-2 w-1/2">
             <label
-              className="uppercase text-xs font-bold"
+              className="uppercase md:text-xs text-[10px] font-bold"
               htmlFor="checkoutDate"
             >
               checkout
             </label>
             <input
-              className="text-base font-light outline-none selection:bg-primary"
+              className="text-base font-light outline-none w-full"
               type="date"
               name="checkoutDate"
               id="checkoutDate"
@@ -119,7 +119,7 @@ function BookingWidget({ place }: Props) {
             numberOfNights ? "rounded-none" : "rounded-b-lg"
           } border-t-transparent flex text-start border border-gray-400 px-4 py-3`}
         >
-          <label className="uppercase text-xs font-bold" htmlFor="checkoutDate">
+          <label className="uppercase md:text-xs text-[10px] font-bold" htmlFor="checkoutDate">
             Number of guests
           </label>
           <input
@@ -137,7 +137,7 @@ function BookingWidget({ place }: Props) {
         {numberOfNights > 0 && (
           <>
             <div className="flex-col rounded-b-none border-t-transparent flex text-start border border-gray-400 px-4 py-3">
-              <label className="uppercase text-xs font-bold" htmlFor="name">
+              <label className="uppercase md:text-xs text-[10px] font-bold" htmlFor="name">
                 Full Name
               </label>
               <input
@@ -152,7 +152,7 @@ function BookingWidget({ place }: Props) {
             </div>
 
             <div className="flex-col border rounded-t-none border-t-transparent flex text-start  rounded-lg border-gray-400 px-4 py-3">
-              <label className="uppercase text-xs font-bold" htmlFor="phoneNo">
+              <label className="uppercase md:text-xs text-[10px] font-bold" htmlFor="phoneNo">
                 Mobile number
               </label>
               <input
@@ -171,7 +171,8 @@ function BookingWidget({ place }: Props) {
 
       <button
         onClick={bookThisPlace}
-        className="reserve mt-5 font-thin text-lg"
+        className="reserve mt-5 font-thin text-lg disabled:opacity-50 disabled:cursor-not-allowed"
+        disabled={!checkIn || !checkOut || !name || !phone}
       >
         Reserve
       </button>

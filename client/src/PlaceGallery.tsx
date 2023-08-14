@@ -36,7 +36,7 @@ function PlaceGallery({ place }: Props) {
             close photos
           </button>
         </div>
-        <h1 className="text-3xl pt-14">more photos of {place.title}</h1>
+        <h1 className="text-xl pt-14">more photos of {place.title}</h1>
         {/* photos displayed here */}
         <div className="grid gap-4 mt-6 rounded-2xl overflow-hidden">
           {place.photos?.length > 0 &&
@@ -74,7 +74,7 @@ function PlaceGallery({ place }: Props) {
             <img
               className="aspect-square object-cover"
               src={`https://firebasestorage.googleapis.com/v0/b/airstay-6c8e3.appspot.com/o/${place.photos[1]}?alt=media&token=a58ca9bb-9265-4318-9602-3cf13a68b967`}
-              alt={place.photos[0].caption}
+              alt={place.photos[1].caption}
             />
           )}
 
@@ -83,7 +83,7 @@ function PlaceGallery({ place }: Props) {
               <img
                 className="aspect-square object-cover relative top-3"
                 src={`https://firebasestorage.googleapis.com/v0/b/airstay-6c8e3.appspot.com/o/${place.photos[2]}?alt=media&token=a58ca9bb-9265-4318-9602-3cf13a68b967`}
-                alt={place.photos[0].caption}
+                alt={place.photos[2].caption}
               />
             )}
           </div>
@@ -93,7 +93,7 @@ function PlaceGallery({ place }: Props) {
             <img
               className="aspect-square object-cover"
               src={`https://firebasestorage.googleapis.com/v0/b/airstay-6c8e3.appspot.com/o/${place.photos[3]}?alt=media&token=a58ca9bb-9265-4318-9602-3cf13a68b967`}
-              alt={place.photos[0].caption}
+              alt={place.photos[3].caption}
             />
           )}
 
@@ -102,7 +102,7 @@ function PlaceGallery({ place }: Props) {
               <img
                 className="aspect-square object-cover relative top-3"
                 src={`https://firebasestorage.googleapis.com/v0/b/airstay-6c8e3.appspot.com/o/${place.photos[4]}?alt=media&token=a58ca9bb-9265-4318-9602-3cf13a68b967`}
-                alt={place.photos[0].caption}
+                alt={place.photos[4].caption}
               />
             )}
           </div>

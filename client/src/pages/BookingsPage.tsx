@@ -19,20 +19,21 @@ function BookingsPage({}: Props) {
     <div className="">
       <AccountNav />
       <div className="text-center my-12">Bookings Page</div>
-      <div className="max-w-5xl mx-auto">
+      <div className="px-2 md:px-0 md:max-w-5xl mx-auto ">
         {bookings.length > 0 &&
           bookings.map((booking: any) => (
             <Link
               to={"/account/bookings/" + booking._id}
               className="bg-gray-100/40 border shadow flex cursor-pointer items-center gap-5 rounded-2xl overflow-hidden my-8"
             >
-              <div className="h-40 w-40 shrink-0 rounded-2xl">
+              <div className="h-28 w-28 md:h-40 md:w-40 shrink-0 rounded-2xl">
                 {booking.place.photos.length > 0 && (
                   <img
                     className="object-cover w-full h-full"
-                    src={
-                      "http://localhost:4000/uploads/" + booking.place.photos[0]
-                    }
+                    // src={
+                    //   "http://localhost:4000/uploads/" + booking.place.photos[0]
+                    // }
+                    src={`https://firebasestorage.googleapis.com/v0/b/airstay-6c8e3.appspot.com/o/${booking.place.photos[0]}?alt=media&token=a58ca9bb-9265-4318-9602-3cf13a68b967`}
                     alt={booking.place.title}
                   />
                 )}

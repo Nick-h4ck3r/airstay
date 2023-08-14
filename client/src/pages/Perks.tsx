@@ -15,9 +15,12 @@ function Perks({ selectedPerks, onChange }: Props) {
       ]);
     }
   }
+
+  const svgClasses = "w-5 md:w-6 h-5 md:h-6";
+
   return (
     <>
-      <label className="border flex items-center space-x-3 p-4 rounded-xl cursor-pointer">
+      <label className="border flex items-center space-x-2 md:space-x-3 p-3 md:p-4 rounded-xl cursor-pointer">
         <input
           type="checkbox"
           onChange={handleCbClick}
@@ -30,7 +33,7 @@ function Perks({ selectedPerks, onChange }: Props) {
           viewBox="0 0 24 24"
           strokeWidth="1.5"
           stroke="currentColor"
-          className="w-6 h-6"
+          className={svgClasses}
         >
           <path
             strokeLinecap="round"
@@ -41,7 +44,7 @@ function Perks({ selectedPerks, onChange }: Props) {
         <span>WiFi</span>
       </label>
 
-      <label className="border flex items-center space-x-3 p-4 rounded-xl cursor-pointer">
+      <label className="border flex items-center space-x-2 md:space-x-3 p-3 md:p-4 rounded-xl cursor-pointer">
         <input
           type="checkbox"
           onChange={handleCbClick}
@@ -54,7 +57,7 @@ function Perks({ selectedPerks, onChange }: Props) {
           viewBox="0 0 24 24"
           strokeWidth="1.5"
           stroke="currentColor"
-          className="w-6 h-6"
+          className={svgClasses}
         >
           <path
             strokeLinecap="round"
@@ -65,7 +68,7 @@ function Perks({ selectedPerks, onChange }: Props) {
         <span>Free parking</span>
       </label>
 
-      <label className="border flex items-center space-x-3 p-4 rounded-xl cursor-pointer">
+      <label className="border flex items-center space-x-2 md:space-x-3 p-3 md:p-4 rounded-xl cursor-pointer">
         <input
           type="checkbox"
           onChange={handleCbClick}
@@ -78,7 +81,7 @@ function Perks({ selectedPerks, onChange }: Props) {
           viewBox="0 0 24 24"
           strokeWidth="1.5"
           stroke="currentColor"
-          className="w-6 h-6"
+          className={svgClasses}
         >
           <path
             strokeLinecap="round"
@@ -89,7 +92,7 @@ function Perks({ selectedPerks, onChange }: Props) {
         <span>TV</span>
       </label>
 
-      <label className="border flex items-center space-x-3 p-4 rounded-xl cursor-pointer">
+      <label className="border flex items-center space-x-2 md:space-x-3 p-3 md:p-4 rounded-xl cursor-pointer">
         <input
           type="checkbox"
           onChange={handleCbClick}
@@ -102,7 +105,7 @@ function Perks({ selectedPerks, onChange }: Props) {
           viewBox="0 0 24 24"
           strokeWidth="1.5"
           stroke="currentColor"
-          className="w-6 h-6"
+          className={svgClasses}
         >
           <path
             strokeLinecap="round"
@@ -113,7 +116,7 @@ function Perks({ selectedPerks, onChange }: Props) {
         <span>Pets allowed</span>
       </label>
 
-      <label className="border flex items-center space-x-3 p-4 rounded-xl cursor-pointer">
+      <label className="border flex items-center space-x-2 md:space-x-3 p-3 md:p-4 rounded-xl cursor-pointer">
         <input
           type="checkbox"
           onChange={handleCbClick}
@@ -126,7 +129,7 @@ function Perks({ selectedPerks, onChange }: Props) {
           viewBox="0 0 24 24"
           strokeWidth="1.5"
           stroke="currentColor"
-          className="w-6 h-6"
+          className={svgClasses}
         >
           <path
             strokeLinecap="round"
@@ -137,7 +140,7 @@ function Perks({ selectedPerks, onChange }: Props) {
         <span>Private entrance</span>
       </label>
 
-      <label className="border flex items-center space-x-3 p-4 rounded-xl cursor-pointer">
+      <label className="border flex items-center space-x-2 md:space-x-3 p-3 md:p-4 rounded-xl cursor-pointer">
         <input
           type="checkbox"
           onChange={handleCbClick}
@@ -150,7 +153,7 @@ function Perks({ selectedPerks, onChange }: Props) {
           viewBox="0 0 24 24"
           strokeWidth="1.5"
           stroke="currentColor"
-          className="w-6 h-6"
+          className={svgClasses}
         >
           <path
             strokeLinecap="round"

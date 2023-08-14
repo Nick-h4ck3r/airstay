@@ -42,7 +42,7 @@ function PlacePage({}: Props) {
 
   if (showMorePhotos)
     return (
-      <div className="my-16 max-w-3xl mx-auto">
+      <div className="my-10 md:my-16 max-w-3xl mx-auto">
         <div
           onClick={() => setShowMorePhotos(false)}
           className="z-20 fixed inline-flex px-3 py-1 bg-white rounded-2xl text-black items-center shadow-md border border-gray-400"
@@ -68,9 +68,9 @@ function PlacePage({}: Props) {
             close photos
           </button>
         </div>
-        <h1 className="text-3xl pt-14">more photos of {place.title}</h1>
+        <h1 className="text-xl font-semibold pt-10 md:pt-14">more photos of {place.title}</h1>
         {/* photos displayed here */}
-        <div className="grid gap-5 mt-6 rounded-2xl overflow-hidden">
+        <div className="grid gap-2 md:gap-4 mt-6 rounded-2xl overflow-hidden">
           {place.photos?.length > 0 &&
             place.photos?.map((photo: any) => (
               <div className="">
@@ -88,9 +88,9 @@ function PlacePage({}: Props) {
     );
 
   return (
-    <div className="my-10 py-10 md:-mx-28 md:px-28 bg-gray-100">
+    <div className="mt-6 md:mt-10 py-10 -mx-6 px-6 md:-mx-28 md:px-28 bg-gray-100">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-3xl font-semibold pb-1">{place.title}</h1>
+        <h1 className="text-2xl leading-7 md:text-3xl font-semibold pb-1">{place.title}</h1>
         <div className="inline-flex items-center text-gray-500 gap-[2px] px-1">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -112,7 +112,7 @@ function PlacePage({}: Props) {
             />
           </svg>
           <a
-            className="underline font-medium"
+            className="underline font-medium text-sm md:text-base"
             target="_blank"
             rel="noreferrer"
             href={"https://www.google.com/maps/place/" + place.address}
@@ -121,7 +121,7 @@ function PlacePage({}: Props) {
           </a>
         </div>
         <div className="relative ">
-          <div className="mt-6 grid gap-3 grid-cols-[2fr_1fr_1fr] rounded-2xl overflow-hidden">
+          <div className="mt-6 grid gap-1 md:gap-3 grid-cols-[2fr_1fr_1fr] rounded-2xl overflow-hidden">
             <div className="">
               {place.photos?.[0] && (
                 <div>
@@ -199,7 +199,7 @@ function PlacePage({}: Props) {
         </div>
 
         <div className="my-8 grid grid-cols-1 md:grid-cols-[2fr_1fr]">
-          <div className="pr-14">
+          <div className="md:pr-14">
             <div className="pb-8">
               <h2 className="text-2xl font-semibold">Description</h2>
               <pre className="mt-2 whitespace-break-spaces text-gray-600 text-base text-justify font-outfit">

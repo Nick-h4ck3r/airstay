@@ -44,11 +44,11 @@ function PlacesFormPage({}: Props) {
   }, [id]);
 
   function inputHeader(text: string) {
-    return <h2 className="text-2xl font-semibold mt-3">{text}</h2>;
+    return <h2 className="text-xl md:text-2xl font-semibold mt-3">{text}</h2>;
   }
 
   function inputDesc(text: string) {
-    return <p className="text-gray-500">{text}</p>;
+    return <p className="text-gray-500 text-sm md:text-base">{text}</p>;
   }
 
   function preInput(header: any, desc: any) {
@@ -143,7 +143,7 @@ function PlacesFormPage({}: Props) {
   return (
     <div>
       <AccountNav />
-      <form onSubmit={savePlace} className="">
+      <form onSubmit={savePlace} className="max-w-6xl mx-auto px-2 md:px-0">
         {preInput("Title", "Title for your places should be catchy.")}
         <input
           className=" "
@@ -172,7 +172,7 @@ function PlacesFormPage({}: Props) {
           />
           <button
             onClick={addPhotoByLink}
-            className={`bg-gray-200 px-6 rounded-2xl my-1 ${
+            className={`bg-gray-200 px-4 md:px-8 text-sm md:text-base rounded-2xl my-1 ${
               !photoLink && "opacity-50"
             }`}
             disabled={!photoLink}
@@ -181,7 +181,7 @@ function PlacesFormPage({}: Props) {
           </button>
         </div>
 
-        <div className="mt-2 gap-2 grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+        <div className="mt-2 gap-2 grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
           {addedPhotos.length > 0 &&
             addedPhotos.map((link: any) => (
               <div key={link} className="h-32 flex relative">
@@ -248,7 +248,7 @@ function PlacesFormPage({}: Props) {
               </div>
             ))}
 
-          <label className="h-32 inline-flex items-center justify-center gap-3 border rounded-2xl p-8 text-2xl font-bold text-gray-600  cursor-pointer">
+          <label className="h-32 inline-flex items-center justify-center gap-1 md:gap-3 border rounded-2xl md:p-8 text-sm md:text-2xl font-bold text-gray-600  cursor-pointer">
             <input
               type="file"
               multiple
@@ -261,7 +261,7 @@ function PlacesFormPage({}: Props) {
               viewBox="0 0 24 24"
               strokeWidth="1.5"
               stroke="currentColor"
-              className="w-8 h-8"
+              className="w-5 md:w-8 h-5 md:h-8"
             >
               <path
                 strokeLinecap="round"
@@ -290,7 +290,7 @@ function PlacesFormPage({}: Props) {
           "Perks",
           "What makes your place special? Select all that apply."
         )}
-        <div className="mt-2 mb-6 grid gap-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div className="mt-2 mb-6 grid gap-2 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 text-xs md:text-base">
           <Perks selectedPerks={perks} onChange={setPerks} />
         </div>
 

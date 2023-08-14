@@ -24,7 +24,6 @@ import BookingPage from "./pages/BookingPage";
 axios.defaults.baseURL = "https://airstay.cyclic.app";
 axios.defaults.withCredentials = true;
 
-
 axios.defaults.timeout = 50000;
 
 function App() {

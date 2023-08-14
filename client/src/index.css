@@ -14,7 +14,7 @@ input[type="password"],
 input[type="number"],
 input[type="tel"],
 textarea {
-  @apply w-full border my-2 py-3 px-4 rounded-2xl;
+  @apply w-full border my-2 py-2 md:py-3 px-4 rounded-2xl text-sm md:text-base;
 }
 
 textarea {
@@ -22,11 +22,19 @@ textarea {
 }
 
 button.primary {
-  @apply bg-primary text-white px-2 py-3 text-center rounded-2xl w-full font-semibold text-xl;
+  @apply bg-primary text-white px-2 py-3 text-center rounded-2xl w-full font-semibold md:text-xl;
 }
 
 button.reserve {
-  @apply bg-gradient-to-r from-[#E51E4D] to-[#D70566] text-white px-2 py-4 rounded-xl w-full font-semibold text-xl hover:from-[#D70566] hover:to-[#E51E4D];
+  @apply bg-gradient-to-r from-[#E51E4D] to-[#D70566] text-white px-2 py-4 rounded-xl w-full font-semibold md:text-xl hover:from-[#D70566] hover:to-[#E51E4D];
+}
+
+button.googleAuthBtn {
+  @apply bg-gray-200 text-black mt-3 mb-8 px-2 py-3 text-center rounded-2xl w-full font-semibold md:text-xl flex items-center justify-center gap-2
+}
+
+button.secondary {
+  @apply bg-white text-primary px-2 py-3 text-center rounded-2xl w-full font-semibold md:text-xl border-2 border-primary;
 }
 /* #E51E4D */
 /* #D70566 */
