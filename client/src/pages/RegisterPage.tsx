@@ -68,7 +68,7 @@ export default function RegisterPage() {
           <p className="mx-4 text-sm md:text-base text-gray-500">or</p>
           <hr className="w-1/3 border-t-2 border-gray-300" />
         </div>
-        <button className="googleAuthBtn">
+        <button className="googleAuthBtn opacity-60 cursor-not-allowed">
           <svg viewBox="0 0 48 48" className="w-[22px] h-[22px]">
             <title>Google Logo</title>
             <clipPath id="g">

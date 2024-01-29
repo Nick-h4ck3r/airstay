@@ -68,7 +68,9 @@ function PlacePage({}: Props) {
             close photos
           </button>
         </div>
-        <h1 className="text-xl font-semibold pt-10 md:pt-14">more photos of {place.title}</h1>
+        <h1 className="text-xl font-semibold pt-10 md:pt-14">
+          more photos of {place.title}
+        </h1>
         {/* photos displayed here */}
         <div className="grid gap-2 md:gap-4 mt-6 rounded-2xl overflow-hidden">
           {place.photos?.length > 0 &&
@@ -80,7 +82,6 @@ function PlacePage({}: Props) {
                   src={`https://firebasestorage.googleapis.com/v0/b/airstay-6c8e3.appspot.com/o/${photo}?alt=media&token=a58ca9bb-9265-4318-9602-3cf13a68b967`}
                   alt={photo.caption}
                 />
-               
               </div>
             ))}
         </div>
@@ -90,7 +91,9 @@ function PlacePage({}: Props) {
   return (
     <div className="mt-6 md:mt-10 py-10 -mx-6 px-6 md:-mx-28 md:px-28 bg-gray-100">
       <div className="max-w-6xl mx-auto">
-        <h1 className="text-2xl leading-7 md:text-3xl font-semibold pb-1">{place.title}</h1>
+        <h1 className="text-2xl leading-7 md:text-3xl font-semibold pb-1">
+          {place.title}
+        </h1>
         <div className="inline-flex items-center text-gray-500 gap-[2px] px-1">
           <svg
             xmlns="http://www.w3.org/2000/svg"
