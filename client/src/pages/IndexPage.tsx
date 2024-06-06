@@ -64,7 +64,7 @@ function IndexPage({}: Props) {
                     duration: 2,
                     delay: index * 0.2,
                   }}
-                  className="bg-gray-100/40 backdrop-blur-sm shadow rounded-xl overflow-hidden"
+                  className="bg-gray-100/40 backdrop-blur-sm shadow-md rounded-xl overflow-hidden hover:shadow-xl duration-300"
                 >
                   <div className="flex relative">
                     <img
@@ -82,24 +82,22 @@ function IndexPage({}: Props) {
                       onClick={() => addToFav()}
                       className="absolute right-4 top-4 text-gray-100 z-30"
                     >
-                      <div>
-                        <HeartIcon />
-                      </div>
+                      <HeartIcon className="fill-black/50 hover:opacity-60 duration-300" />
                     </button>
                   </div>
 
-                  <div className="px-4 py-3">
-                    <h2 className="truncate font-semibold text-xl">
+                  <div className="px-4 pt-4">
+                    <h2 className="line-clamp-2 font-semibold text-xl pb-1">
                       {place.title}
                     </h2>
 
-                    <h3 className="font-light inline-flex text-[13px] text-gray-600 items-center gap-[2px]">
+                    <h3 className="font-light inline-flex text-[13px] text-gray-600 items-center gap-1">
                       <MapPinIcon className="h-3 w-3 fill-black stroke-white" />
 
                       {place.address}
                     </h3>
 
-                    <div className="border-t my-4" />
+                    <div className="border-t my-2" />
 
                     {place.perks.length > 0 && (
                       <div className="grid grid-cols-3 gap-3">
@@ -127,15 +125,15 @@ function IndexPage({}: Props) {
                       </div>
                     )}
 
-                    <div className="border-t my-4" />
+                    <div className="border-t my-2" />
 
-                    <div className="flex justify-between -mt-1 mb-1">
+                    <div className="flex items-end justify-between pt-1 pb-3">
                       {/* price div  */}
                       <div className="inline-flex items-center">
                         <IndianRupeeIcon className="h-5 w-5 stroke-[3]" />
 
                         <span className="font-light text-sm text-gray-600">
-                          <span className="text-black font-semibold text-xl">
+                          <span className="text-black font-bold text-2xl">
                             {place.price}
                           </span>{" "}
                           /night
